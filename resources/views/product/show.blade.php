@@ -35,7 +35,7 @@
                                 Rate Me - {{ $data['product']->name }}
                             </div>
                             <div class="card-body">
-                                <form id="add-review-post-form" method="post" action="{{ route('review.store',['id' => 33 ]) }}" enctype="multipart/form-data">
+                                <form id="add-review-post-form" method="post" action="{{ route('review.store') }}" enctype="multipart/form-data">
 
                                     @csrf
 
