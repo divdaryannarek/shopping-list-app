@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
 use App\Models\Review;
+use App\Models\User;
 use App\Repositories\ReviewRepository;
+use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
@@ -20,9 +22,12 @@ class ReviewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        $reviews = $this->reviewRepository->getProductReviews($request);
+
+        return response()->json($reviews);
     }
 
     /**

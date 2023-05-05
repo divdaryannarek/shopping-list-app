@@ -12,6 +12,17 @@ class ReviewRepository
         return Review::latest()->paginate(10);
     }
 
+    public function getProductReviews($request)
+    {
+
+        $productId = $request['id'];
+
+        $sortField = $request->input('field') ?? 'created_at';
+        $sortOrder = $request->input('order') ?? 'desc';
+
+        return Review::where('product_id', $productId)->with('user')->orderBy($sortField, $sortOrder)->get();
+    }
+
     public function storeReview($data)
     {
 

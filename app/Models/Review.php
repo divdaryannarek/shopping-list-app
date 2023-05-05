@@ -22,4 +22,9 @@ class Review extends Model
         return $this->BelongsTo(User::class);
     }
 
+    public function getCreatedAtAttribute($value)
+    {
+        return date('Y-M-D h:i:m', strtotime($value));
+    }
+
 }
